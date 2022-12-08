@@ -13,13 +13,13 @@ import RPi.GPIO as GPIO
 pcb_components={"LED":7,"FAN":8,"RESET":3,"POWER":5,"CHECK_PCB":10}
 
 class path():
-    kintaro_folder = "/opt/kintaro/"
+    kintaro_folder = "/storage/Kintaro/"
     start_folder = "start/"
     temp_command = 'vcgencmd measure_temp'
 
 class vars():
     fan_hysteresis = 5
-    fan_starttemp = 60
+    fan_starttemp = 55
     reset_hold_short = 100
     reset_hold_long = 500
     debounce_time = 0.01
@@ -71,20 +71,18 @@ def Falling_Power(channel):
     if (GPIO.input(pcb_components["POWER"]) == GPIO.HIGH) and GPIO.input(pcb_components["CHECK_PCB"]) == GPIO.LOW:  # shutdown funktion if the powerswitch is toggled
         led.toggle(0)
         fan(0)
-        os.system("sudo shutdown -h now")
+        os.system("shutdown -h now")
 
 def Falling_Reset(channel):
     if (GPIO.input(pcb_components["RESET"]) == GPIO.LOW):  # reset function
         time.sleep(vars.debounce_time)  # debounce time
-        os.system("killall emulationstation")
-        time.sleep(5)
-        os.system("sudo reboot")
+        os.system("reboot")
 
 def PCB_Pull(channel):
     GPIO.cleanup()
 
 if (GPIO.input(pcb_components["POWER"]) == GPIO.HIGH) and GPIO.input(pcb_components["CHECK_PCB"]) == GPIO.LOW:
-    os.system("sudo shutdown -h now")
+    os.system("shutdown -h now")
 
 GPIO.add_event_detect(pcb_components["CHECK_PCB"],GPIO.RISING,callback=PCB_Pull)
 
