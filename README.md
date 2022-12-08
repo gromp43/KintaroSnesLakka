@@ -1,11 +1,15 @@
-### NO LONGER SUPPORTED ###
+### ALL Credits to Michael Kirsch ###
 
-Im not working for Kintaro. This software is maintained in my freetime. So please help me out when you find problems and open pull requests
+I simply figured out how to get it working in the lakka image and posting it for others to follow
 
 ## Installing on Lakka raspberry pi image
 
-I'm not fluent in linux so there is probably a better way to do this, but I enabled ssh from lakka's Settings>Services menu
+I'm not fluent in linux so there is probably a better way to do this, but...
+
+I enabled ssh from lakka's Settings>Services menu
+
 Then went to the Main Menu>Information>Network Information to find the IP address assigned to my pi
+
 I then ssh'd into the pi using putty default user/pass is root/root
 
 Once ssh'd in you should be at the default $HOME directory of /storage if not then type cd /storage
