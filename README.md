@@ -9,15 +9,21 @@ Then went to the Main Menu>Information>Network Information to find the IP addres
 I then ssh'd into the pi using putty default user/pass is root/root
 
 Once ssh'd in you should be at the default $HOME directory of /storage if not then type cd /storage
+
 then type mkdir kintaro
-then touch kintaro-service
-as well as touch pcb.py
-then nano kintaro-service
-and copy/paste the code.  ctrl+x to exit, Y to save, then enter.
-repeat that for pcb.py
-type chmod +x ./kintaro-service
-type chmod +x ./pcb.py
+
+1. then touch kintaro-service
+
+2. then nano kintaro-service
+
+3. and copy/paste the code.  ctrl+x to exit, Y to save, then enter.
+
+4. type chmod +x ./kintaro-service 
+
+repeat those 4 commands for pcb.py
+
 type cp kintaro-service /storage/.config/system.d/
+
 then finally sysctl enable kintaro-service
 
 ## Authors
