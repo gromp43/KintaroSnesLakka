@@ -1,4 +1,3 @@
-
 [Unit]
 Description=Kintaro PCB-Script
 
@@ -6,8 +5,8 @@ Description=Kintaro PCB-Script
 Type=simple
 User=root
 Group=root
-WorkingDirectory=/opt/kintaro
-ExecStart=/opt/kintaro/pcb.py
+WorkingDirectory=/storage/kintaro
+ExecStart=/storage/kintaro/pcb.py
 SyslogIdentifier=kintaro
 StandardOutput=syslog
 StandardError=syslog
@@ -16,4 +15,3 @@ RestartSec=3
 
 [Install]
 WantedBy=multi-user.target
-
