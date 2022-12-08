@@ -1,25 +1,25 @@
 ### NO LONGER SUPPORTED ###
 
-## Version 4.0.0
-
 Im not working for Kintaro. This software is maintained in my freetime. So please help me out when you find problems and open pull requests
 
-## Installing on Raspbian/Retropie
+## Installing on Lakka raspberry pi image
 
-You will need to get this whole repository onto your raspberry. You can do that with *git clone  https://github.com/MichaelKirsch/KintaroSnes* and then cd into it. From there on go with these steps:
+I'm not fluent in linux so there is probably a better way to do this, but I enabled ssh from lakka's Settings>Services menu
+Then went to the Main Menu>Information>Network Information to find the IP address assigned to my pi
+I then ssh'd into the pi using putty default user/pass is root/root
 
-BOTH COMMANDS ARE NEEDED! ERRORS AFTER THE FIRST ONE REGARDING MISSING PACKAGES ARE OKAY! Second command will fix that
+Once ssh'd in you should be at the default $HOME directory of /storage if not then type cd /storage
+then type mkdir kintaro
+then touch kintaro-service
+as well as touch pcb.py
+then nano kintaro-service
+and copy/paste the code.  ctrl+x to exit, Y to save, then enter.
+repeat that for pcb.py
+type chmod +x ./kintaro-service
+type chmod +x ./pcb.py
+type cp kintaro-service /storage/.config/system.d/
+then finally sysctl enable kintaro-service
 
-**sudo dpkg -i kintarosnes.deb**
-
-**sudo apt-get install -f**
-
-## Packaging
-
-for packaging use the fpm **https://github.com/jordansissel/fpm** and then run folling command to get a .deb package: 
-
- fpm --log error --after-install install.sh --after-remove  uninstall.sh --architecture armhf --name kintarosnes --version x.x.x -s dir -t deb --vendor Michael --description "Kintaro SNES PCB Driver"  -d python-rpi.gpio -d python3-dialog -d python3-rpi.gpio .
- 
 ## Authors
 
 * **Michael Kirsch** - *Initial work*
