@@ -13,8 +13,7 @@ import RPi.GPIO as GPIO
 pcb_components={"LED":7,"FAN":8,"RESET":3,"POWER":5,"CHECK_PCB":10}
 
 class path():
-    kintaro_folder = "/storage/Kintaro/"
-    start_folder = "start/"
+    kintaro_folder = "/storage/kintaro/"
     temp_command = 'vcgencmd measure_temp'
 
 class vars():
@@ -31,9 +30,6 @@ GPIO.setup(pcb_components["FAN"], GPIO.OUT) #FAN Output
 GPIO.setup(pcb_components["POWER"], GPIO.IN)  #set pin as input
 GPIO.setup(pcb_components["RESET"], GPIO.IN, pull_up_down=GPIO.PUD_UP) #set pin as input and switch on internal pull up resistor
 GPIO.setup(pcb_components["CHECK_PCB"], GPIO.IN, pull_up_down=GPIO.PUD_UP)
-
-
-
 
 def temp(): #returns the gpu temoperature
     res = os.popen(path.temp_command).readline()
@@ -52,7 +48,6 @@ class led:  #class to control the led
             time.sleep(interval)
             led.toggle(0)
             time.sleep(interval)
-
 
 def fan(status):  #switch the fan on or off
     if status == 1:
