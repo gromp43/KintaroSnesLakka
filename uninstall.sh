@@ -1,7 +1,5 @@
 #!/bin/bash
-systemctl stop kintaro
-systemctl disable kintaro
-systemctl daemon-reload
-rm -f /etc/systemd/system/kintaro.service 
-rm -Rf /opt/kintaro/
-rm -f /home/pi/kintarosetup.py
+systemctl stop kintaro.service
+systemctl disable kintaro.service
+rm -f /storage/.config/system.d/kintaro.service 
+rm -Rf /storage/kintaro/
